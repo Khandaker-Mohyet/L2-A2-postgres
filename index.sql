@@ -48,12 +48,14 @@ SELECT * FROM rangers;
 SELECT * FROM species;
 SELECT * FROM sightings;
 
+
 -- 1
 
 INSERT INTO rangers (name, region) VALUES
 ('Derek Fox', 'Coastal Plains');
 
-
+-- 2
+SELECT count(DISTINCT species_id) as unique_species_count FROM sightings;
 
 
 
