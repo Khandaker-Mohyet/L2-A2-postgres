@@ -74,5 +74,34 @@ CREATE TABLE orders (
 
 ---
 
+## 5. Explain the purpose of the WHERE clause in a SELECT statement.
+
+**`WHERE`** ক্লজ ব্যবহার করে আপনি **নির্দিষ্ট শর্ত অনুযায়ী** রেকর্ড নির্বাচন করতে পারেন।
+
+> উদাহরণ:
+
+```sql
+SELECT * FROM employees WHERE salary > 50000;
+```
+
+এটি শুধু ঐসব রেকর্ড ফেরত দিবে যেগুলোর salary ৫০,০০০ টাকার বেশি।
+
+---
+
+## 6. What are the LIMIT and OFFSET clauses used for?
+
+**LIMIT:** কতগুলো রেকর্ড ফেরত দিবে সেটি নির্ধারণ করে।
+**OFFSET:** কতগুলো রেকর্ড স্কিপ করে তারপর রেজাল্ট দিবে।
+
+> উদাহরণ:
+
+```sql
+SELECT * FROM products LIMIT 10 OFFSET 20;
+```
+
+এটি ২১তম রেকর্ড থেকে শুরু করে ১০টি রেকর্ড ফেরত দিবে।
+
+---
+
 
 
