@@ -7,7 +7,7 @@ CREATE TABLE rangers (
     region TEXT
 );
 
-DROP TABLE rangers;
+
 
 CREATE TABLE species (
     species_id SERIAL PRIMARY KEY,
@@ -17,7 +17,7 @@ CREATE TABLE species (
     conservation_status TEXT
 );
 
-DROP TABLE species;
+
 
 CREATE TABLE sightings (
     sighting_id SERIAL PRIMARY KEY,
@@ -28,7 +28,7 @@ CREATE TABLE sightings (
     notes TEXT
 );
 
-DROP TABLE sightings;
+
 
 INSERT INTO rangers (name, region) VALUES
 ('Alice Green', 'Northern Hills'),
@@ -55,30 +55,30 @@ SELECT * FROM species;
 SELECT * FROM sightings;
 
 
--- 1
+-- Problem-1
 
 INSERT INTO rangers (name, region) VALUES
 ('Derek Fox', 'Coastal Plains');
 
--- 2
+-- Problem-2
 SELECT count(DISTINCT species_id) as unique_species_count FROM sightings;
 
--- 3
+-- Problem-3
 SELECT * FROM sightings
 WHERE location LIKE '%Pass'
 
--- 4
+-- Problem-4
 SELECT rangers.name, count(sightings.sighting_id) 
 FROM rangers
 JOIN sightings ON rangers.ranger_id = sightings.ranger_id
 GROUP BY rangers.name ORDER BY rangers.name ASC;
 
--- 5
+-- Problem-5
 SELECT common_name FROM species
 LEFT JOIN sightings on species.species_id=sightings.species_id
 WHERE sightings.species_id IS NULL;
 
--- 6
+-- Problem-6
 SELECT species.common_name, sightings.sighting_time, rangers.name FROM sightings
 JOIN species ON sightings.species_id = species.species_id
 JOIN rangers ON sightings.species_id = rangers.ranger_id
@@ -90,7 +90,7 @@ UPDATE species
 set conservation_status = 'Historic'
 WHERE discovery_date < '1800-01-01';
 
--- 8
+-- Problem-8
 SELECT 
     sighting_id,
     CASE
@@ -101,6 +101,6 @@ SELECT
 FROM sightings;
 
 
--- 9
+-- Problem-9
 DELETE FROM rangers
 WHERE ranger_id NOT IN (SELECT DISTINCT ranger_id FROM sightings);
