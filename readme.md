@@ -103,5 +103,79 @@ SELECT * FROM products LIMIT 10 OFFSET 20;
 
 ---
 
+## 7. How can you modify data using UPDATE statements?
+
+`UPDATE` স্টেটমেন্ট দিয়ে আপনি টেবিলের বিদ্যমান রেকর্ডের তথ্য পরিবর্তন করতে পারেন।
+
+> উদাহরণ:
+
+```sql
+UPDATE employees
+SET salary = salary + 1000
+WHERE department = 'Sales';
+```
+
+এটি Sales ডিপার্টমেন্টের সকল কর্মীর বেতন ১০০০ টাকা বাড়াবে।
+
+---
+
+## 8. What is the significance of the JOIN operation, and how does it work in PostgreSQL?
+
+**JOIN** ব্যবহার করে আপনি **একাধিক টেবিলের তথ্য একত্র করে** কুয়েরি করতে পারেন।
+
+**প্রকারভেদ:**
+
+* `INNER JOIN`: শুধু মিল আছে এমন রেকর্ড
+* `LEFT JOIN`: বাঁ দিকের টেবিলের সব রেকর্ড + মিল থাকলে ডান দিকেরটাও
+* `RIGHT JOIN`, `FULL JOIN` ইত্যাদি
+
+> উদাহরণ:
+
+```sql
+SELECT employees.name, departments.name
+FROM employees
+INNER JOIN departments
+ON employees.department_id = departments.id;
+```
+
+---
+
+## 9. Explain the GROUP BY clause and its role in aggregation operations.
+
+`GROUP BY` ক্লজ দিয়ে আপনি **একই ধরনের রেকর্ডগুলোকে গোষ্ঠীবদ্ধ** করে তাদের উপর **aggregate function** প্রয়োগ করতে পারেন।
+
+> উদাহরণ:
+
+```sql
+SELECT department, COUNT(*) as total_employees
+FROM employees
+GROUP BY department;
+```
+
+এটি প্রতিটি ডিপার্টমেন্টে কতজন কর্মী আছে তা দেখাবে।
+
+---
+
+## 10. How can you calculate aggregate functions like COUNT(), SUM(), and AVG() in PostgreSQL?
+
+**Aggregate functions** ডেটার উপর গাণিতিক হিসাব করতে ব্যবহৃত হয়।
+
+| Function  | Description         |
+| --------- | ------------------- |
+| `COUNT()` | মোট রেকর্ডের সংখ্যা |
+| `SUM()`   | মোট যোগফল           |
+| `AVG()`   | গড় মান              |
+
+> উদাহরণ:
+
+```sql
+SELECT
+  COUNT(*) as total,
+  SUM(salary) as total_salary,
+  AVG(salary) as average_salary
+FROM employees;
+```
+
+---
 
 
