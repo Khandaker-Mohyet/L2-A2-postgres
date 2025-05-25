@@ -83,3 +83,7 @@ SELECT species.common_name, sightings.sighting_time, rangers.name FROM sightings
 JOIN species ON sightings.species_id = species.species_id
 JOIN rangers ON sightings.species_id = rangers.ranger_id
 ORDER BY sightings.sighting_time DESC LIMIT 2;
+
+UPDATE species
+set conservation_status = 'Historic'
+WHERE discovery_date < '1800-01-01';
