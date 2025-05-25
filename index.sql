@@ -64,6 +64,10 @@ WHERE location LIKE '%Pass'
 -- 4
 SELECT rangers.name, count(sightings.sighting_id) 
 FROM rangers
-LEFT JOIN sightings ON rangers.ranger_id = sightings.ranger_id
+JOIN sightings ON rangers.ranger_id = sightings.ranger_id
 GROUP BY rangers.name ORDER BY rangers.name ASC;
 
+-- 5
+SELECT common_name FROM species
+LEFT JOIN sightings on species.species_id=sightings.species_id
+WHERE sightings.species_id IS NULL;
